@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="RewardsApp_CrossPlatform.Views.ItemsPage"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Logout" Clicked="ToolbarItem_Clicked" />
+        <ToolbarItem Text="Scan" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+
+
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}" >
+        <CollectionView x:Name="ItemsCollectionView"
+                ItemsSource="{Binding Items}">
+            <CollectionView.Header>
+                <Label Text="SweetBucks:   200"
+                       FontSize="40"
+                       Padding="0,15,0,0"
+                       HorizontalTextAlignment="Center"
+                       />
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="20,10,20,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <BoxView Color="#2196F3" Grid.ColumnSpan="2" CornerRadius="10"/>
+                        <BoxView Color="#ffbcd9" HeightRequest="90" WidthRequest="362" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="10" Grid.ColumnSpan="2"/>
+                        <Label Text="{Binding Text}"
+                                Grid.Column="0"
+                                HorizontalTextAlignment="Start"
+                                Padding="15,0,0,0"
+                                VerticalOptions="Center"
+                                FontSize="24" />
+                        <Label Text="{Binding Value}"
+                                HorizontalTextAlignment="End"
+                                Padding="0,0,15,0"
+                                VerticalOptions="Center"
+                                Grid.Column="1"
+                                FontSize="30"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView> 
+</ContentPage>

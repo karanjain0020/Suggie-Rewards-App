@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TestProjectXamarin.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="MasterLayout"><!--Contains all the layots for different elememts including logo and texts/fields-->
+
+            <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+                <Image x:Name="LoginIcon" Source="LoginIcon.png" Margin="0,80,0,0"/>
+            </StackLayout>
+
+            <StackLayout x:Name="LoginEntriesStack" VerticalOptions="FillAndExpand">
+                <StackLayout.Padding>
+                    <OnIdiom x:TypeArguments="Thickness">
+                        <OnIdiom.Phone>
+                            <OnPlatform x:TypeArguments="Thickness" iOS="0,40,0,0" Android="15,0" WinPhone="15,0" />
+                        </OnIdiom.Phone>
+                        <OnIdiom.Tablet>
+                            <OnPlatform x:TypeArguments="Thickness" iOS="15,0" Android="15,0" WinPhone="15,0" />
+                        </OnIdiom.Tablet>
+                    </OnIdiom>
+                </StackLayout.Padding>
+
+                <ActivityIndicator x:Name="ActivitySpinner" Color= "Red" IsRunning="True"/>
+
+                <Label x:Name="Lbl_Username" Text="Username" /> <!-- The :Name is used to link these elements (Label, Entry, Button) to the code using variable names. Thus, they assign these elements with variable names-->
+                <Entry x:Name="Entry_Username" Placeholder="Username"/>
+                <Label x:Name ="Lbl_Password" Text="Password"/>
+                <Entry x:Name = "Entry_Password" Placeholder="Password"/>
+                <Button x:Name = "Btn_Signin" Text="Sign In" Clicked="SignInProcedure"/> <!--Clicked is a function given to the Button element.Any Function is "object", Parameters and the Event Args of that function-->
+            </StackLayout> <!--For IOS top padding of 20 is needed because of the top bar present-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
