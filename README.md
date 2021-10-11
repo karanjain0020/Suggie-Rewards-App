@@ -1,4 +1,4 @@
-# GroceryLoyaltyApp
+# SauggieRewardsApp
 Coding Style Agreement
 SweetBucks ‘The Sweet Rewards App’
 
